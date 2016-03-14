@@ -1,4 +1,4 @@
-#!/home/Install/anaconda/bin/python
+#!/c/Users/bob/Anaconda3/python
 
 import sys
 
@@ -48,7 +48,7 @@ class NumJellyEstimator:
  
         # NE24: Add a test for value here
 
-        # Store the fraction.
+        # Store the number of people.
         self.worldPop = people
 
 
