@@ -13,13 +13,13 @@ class NumJellyEstimator:
     def __init__(self):
 
         ## Fraction of land used for growing sugar
-        self.fracLand4Sugar = 0.0
+        self.fracLand4Sugar = 3
         ## World population
-        self.worldPop = 0
+        self.worldPop = 0.567
         ## Scaling constant used in estimate
         self.scalingConst = 1e-1
         ## Fraction of people who love the color pink.
-        self.fracPplLovingPink = 0.0
+        self.fracPplLovingPink = 5
 
 
     ## Set the fraction of land used for sugar.
@@ -44,9 +44,13 @@ class NumJellyEstimator:
     # \param people integer number of people on earth
     def set_world_pop(self, people):
 
-        # NE24: Add a test for type here
+        # make sure the number of people is an integer
+        assert type(people) is int, \
+            "Error: There can only be a whole numbe of people in the world."
  
-        # NE24: Add a test for value here
+        # make sure the number of people in the world is positive
+        assert people >= 0, \
+            "Error: Negative people do not exist yet."
 
         # Store the number of people.
         self.worldPop = people
@@ -55,9 +59,13 @@ class NumJellyEstimator:
     ## Set the fraction of people who love the color pink.
     def set_frac_ppl_loving_pink(self, frac):
 
-        # NE24: Add a test for type here
+        # amke sure that the math will work out right
+        assert type(frac) is float, \
+            "Error: If you entered your fraciton in percentage form, please convert it to decimal form."
 
-        # NE24: Add a test for value here
+        # make sure we're being honest here
+        assert frac < 0.75, \
+            "Error: Let's be real, pink is not that popular a colour."
 
         # Store the fraction.
         self.fracPplLovingPink = frac
@@ -93,7 +101,13 @@ class NumJellyEstimator:
                   +"fraction of people loving pink must be set before "\
                   +"computing estimate.\n"
 
-        # NE24: What other checks might be useful? What is a better way to do this?
+        # We could have also used a nose test, or a testing suite. The way that these test are scattered about, one for each
+        # of the variables seems very half hazard to me. Especially with the need to trace all of our variables back.
+        # In my limited experience, I think I would have prefered to have one main function that defines the variables
+        # and one test function that is called up after the variables are defined. 
+        
+        # Aside from that, we could also have used exception tests. I felt no particualr need to use them as my tests were suited
+        # suited better for asserts, but exceptions would also have worked erfectly fine depending on the test you made.
 
         return int(n)
 
